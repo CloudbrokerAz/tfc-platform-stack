@@ -4,7 +4,7 @@
 
 component "platform_onboarding" {
   source  = "app.terraform.io/cloudbrokeraz/platform-onboarding/tfe"
-  version = "1.0.0"  # Update after module is published to PMR
+  version = "1.0.1"  # Update after module is published to PMR
   
   inputs = {
     # TFC Organization
@@ -12,6 +12,9 @@ component "platform_onboarding" {
     
     # Optional: Filter to single business unit
     business_unit = var.business_unit
+    
+    # YAML Configuration Content
+    yaml_config_content = var.yaml_config_content
     
     # GitHub Repository Creation
     create_bu_repositories = var.create_bu_repositories

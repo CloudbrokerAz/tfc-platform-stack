@@ -43,6 +43,9 @@ deployment "finance" {
     # Filter to finance business unit
     business_unit = "finance"
     
+    # YAML Configuration - Read from config/ directory
+    yaml_config_content = file("${path.root}/config/finance.yaml")
+    
     # OIDC tokens
     tfe_identity_token = identity_token.tfe.jwt
     github_token       = identity_token.github.jwt
@@ -75,6 +78,9 @@ deployment "engineering" {
     # Filter to engineering business unit
     business_unit = "engineering"
     
+    # YAML Configuration - Read from config/ directory
+    yaml_config_content = file("${path.root}/config/engineering.yaml")
+    
     # OIDC tokens
     tfe_identity_token = identity_token.tfe.jwt
     github_token       = identity_token.github.jwt
@@ -106,6 +112,9 @@ deployment "sales" {
     
     # Filter to sales business unit
     business_unit = "sales"
+    
+    # YAML Configuration - Read from config/ directory
+    yaml_config_content = file("${path.root}/config/sales.yaml")
     
     # OIDC tokens
     tfe_identity_token = identity_token.tfe.jwt

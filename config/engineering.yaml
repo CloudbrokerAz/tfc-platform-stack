@@ -1,0 +1,11 @@
+business_unit: engineering
+
+bu_projects:
+  - project_name: "platform-services"
+    project_description: "Core platform services and infrastructure"
+  
+  - project_name: "developer-tools"
+    project_description: "Developer productivity and tooling infrastructure"
+  
+  - project_name: "api-gateway"
+    project_description: "API gateway and service mesh infrastructure"

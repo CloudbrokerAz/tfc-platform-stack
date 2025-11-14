@@ -87,3 +87,12 @@ variable "business_unit" {
   description = "Optional: Filter to single business unit (null = all BUs from YAML)"
   default     = null
 }
+
+# ============================================================================
+# YAML Configuration
+# ============================================================================
+
+variable "yaml_config_content" {
+  type        = string
+  description = "YAML configuration content (will be passed from deployment)"
+}
