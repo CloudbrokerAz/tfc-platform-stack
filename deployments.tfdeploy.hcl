@@ -30,10 +30,45 @@ locals {
   bu_stack_repo_suffix     = "bu-stack"
   enable_branch_protection = true
   
-  # YAML Configuration Files - Read in locals (file() works here!)
-  finance_yaml     = file("./config/finance.yaml")
-  engineering_yaml = file("./config/engineering.yaml")
-  sales_yaml       = file("./config/sales.yaml")
+  # YAML Configuration Content - Embedded as strings (file() not available in .tfdeploy.hcl)
+  finance_yaml = <<-EOT
+    business_unit: finance
+
+    bu_projects:
+      - project_name: "payment-gateway"
+        project_description: "Payment processing infrastructure"
+      
+      - project_name: "financial-reporting"
+        project_description: "Financial reporting and analytics infrastructure"
+  EOT
+  
+  engineering_yaml = <<-EOT
+    business_unit: engineering
+
+    bu_projects:
+      - project_name: "platform-services"
+        project_description: "Core platform services and infrastructure"
+      
+      - project_name: "developer-tools"
+        project_description: "Developer productivity and tooling infrastructure"
+      
+      - project_name: "api-gateway"
+        project_description: "API gateway and service mesh infrastructure"
+  EOT
+  
+  sales_yaml = <<-EOT
+    business_unit: sales
+
+    bu_projects:
+      - project_name: "crm-platform"
+        project_description: "Customer relationship management platform infrastructure"
+      
+      - project_name: "analytics-pipeline"
+        project_description: "Sales analytics and reporting pipeline"
+      
+      - project_name: "sales-portal"
+        project_description: "Sales team portal and tools infrastructure"
+  EOT
 }
 
 # ============================================================================
