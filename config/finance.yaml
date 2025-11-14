@@ -1,17 +1,35 @@
-business_unit: finance
+business_unit: "finance"  # Must match deployment input
 
-projects:
-  - name: web-app
-    description: Finance web application infrastructure
+bu_projects:
+  - project_name: "project-name"  # TFC project name
+    project_description: "Project description"
     
-    var_sets:
-      variables:
-        - key: environment
-          value: production
-          category: terraform
-          description: Environment identifier
+    # OPTIONAL: Workspaces for this project
+    bu_workspaces:
+      - workspace_name: "workspace-name"
+        workspace_description: "Workspace description"
+        terraform_version: "1.6.0"
+        working_directory: ""  # Root directory or subdirectory
+        auto_apply: false  # true for auto-apply
         
-        - key: team
-          value: finance
-          category: terraform
-          description: Team identifier
+        # VCS configuration
+        vcs_repo:
+          identifier: "github-org/repo-name"
+          branch: "main"
+          oauth_token_id: ""  # Optional if using Stack variable
+        
+        # Optional: Variable sets to attach
+        variable_set_names:
+          - "common-variables"
+          - "finance-secrets"
+        
+        # Optional: Agent pool
+        agent_pool_name: "finance-agents"
+        
+        # Optional: Trigger patterns
+        trigger_patterns:
+          - "/modules/finance/**"
+        
+        # Optional: Remote state consumers
+        remote_state_consumer_ids:
+          - "ws-abc123"
