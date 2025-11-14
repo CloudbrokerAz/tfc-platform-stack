@@ -29,6 +29,11 @@ locals {
   bu_stack_repo_prefix     = "tfc"
   bu_stack_repo_suffix     = "bu-stack"
   enable_branch_protection = true
+  
+  # YAML Configuration Files - Read in locals (file() works here!)
+  finance_yaml     = file("${path.root}/config/finance.yaml")
+  engineering_yaml = file("${path.root}/config/engineering.yaml")
+  sales_yaml       = file("${path.root}/config/sales.yaml")
 }
 
 # ============================================================================
@@ -43,8 +48,8 @@ deployment "finance" {
     # Filter to finance business unit
     business_unit = "finance"
     
-    # YAML Configuration - Read from config/ directory
-    yaml_config_content = file("./config/finance.yaml")
+    # YAML Configuration - Reference local variable
+    yaml_config_content = local.finance_yaml
     
     # OIDC tokens
     tfe_identity_token = identity_token.tfe.jwt
@@ -78,8 +83,8 @@ deployment "engineering" {
     # Filter to engineering business unit
     business_unit = "engineering"
     
-    # YAML Configuration - Read from config/ directory
-    yaml_config_content = file("./config/engineering.yaml")
+    # YAML Configuration - Reference local variable
+    yaml_config_content = local.engineering_yaml
     
     # OIDC tokens
     tfe_identity_token = identity_token.tfe.jwt
@@ -113,8 +118,8 @@ deployment "sales" {
     # Filter to sales business unit
     business_unit = "sales"
     
-    # YAML Configuration - Read from config/ directory
-    yaml_config_content = file("./config/sales.yaml")
+    # YAML Configuration - Reference local variable
+    yaml_config_content = local.sales_yaml
     
     # OIDC tokens
     tfe_identity_token = identity_token.tfe.jwt
