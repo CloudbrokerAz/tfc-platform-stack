@@ -44,7 +44,7 @@ deployment "finance" {
     business_unit = "finance"
     
     # YAML Configuration - Read from config/ directory
-    yaml_config_content = file("${path.root}/config/finance.yaml")
+    yaml_config_content = file("./config/finance.yaml")
     
     # OIDC tokens
     tfe_identity_token = identity_token.tfe.jwt
@@ -79,7 +79,7 @@ deployment "engineering" {
     business_unit = "engineering"
     
     # YAML Configuration - Read from config/ directory
-    yaml_config_content = file("${path.root}/config/engineering.yaml")
+    yaml_config_content = file("./config/engineering.yaml")
     
     # OIDC tokens
     tfe_identity_token = identity_token.tfe.jwt
@@ -114,7 +114,7 @@ deployment "sales" {
     business_unit = "sales"
     
     # YAML Configuration - Read from config/ directory
-    yaml_config_content = file("${path.root}/config/sales.yaml")
+    yaml_config_content = file("./config/sales.yaml")
     
     # OIDC tokens
     tfe_identity_token = identity_token.tfe.jwt
