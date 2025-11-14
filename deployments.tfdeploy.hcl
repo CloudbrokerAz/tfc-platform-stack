@@ -31,9 +31,9 @@ locals {
   enable_branch_protection = true
   
   # YAML Configuration Files - Read in locals (file() works here!)
-  finance_yaml     = file("${path.root}/config/finance.yaml")
-  engineering_yaml = file("${path.root}/config/engineering.yaml")
-  sales_yaml       = file("${path.root}/config/sales.yaml")
+  finance_yaml     = file("./config/finance.yaml")
+  engineering_yaml = file("./config/engineering.yaml")
+  sales_yaml       = file("./config/sales.yaml")
 }
 
 # ============================================================================
