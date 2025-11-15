@@ -96,10 +96,3 @@ variable "yaml_config_content" {
   type        = string
   description = "YAML configuration content (will be passed from deployment)"
 }
-
-variable "github_token" {
-  type        = string
-  description = "GitHub personal access token for GitHub provider"
-  ephemeral   = true
-  sensitive   = true
-}
