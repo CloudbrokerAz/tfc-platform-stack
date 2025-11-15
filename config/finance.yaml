@@ -1,8 +1,0 @@
-business_unit: finance
-
-bu_projects:
-  - project_name: "payment-gateway"
-    project_description: "Payment processing infrastructure"
-  
-  - project_name: "financial-reporting"
-    project_description: "Financial reporting and analytics infrastructure"
