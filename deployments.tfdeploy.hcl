@@ -93,8 +93,8 @@ deployment "finance" {
     yaml_config_content = local.finance_yaml
     
     # OIDC tokens
-    tfe_identity_token = identity_token.tfe.jwt
-    github_token       = identity_token.github.jwt
+    tfe_identity_token = store.varset.platform_team_config.tfe_identity_token
+    github_token       = store.varset.platform_team_config.github_token
     
     # GitHub repository creation
     create_bu_repositories   = local.create_bu_repositories
@@ -128,8 +128,8 @@ deployment "engineering" {
     yaml_config_content = local.engineering_yaml
     
     # OIDC tokens
-    tfe_identity_token = identity_token.tfe.jwt
-    github_token       = identity_token.github.jwt
+    tfe_identity_token = store.varset.platform_team_config.tfe_identity_token
+    github_token       = store.varset.platform_team_config.github_token
     
     # GitHub repository creation
     create_bu_repositories   = local.create_bu_repositories
@@ -163,8 +163,8 @@ deployment "sales" {
     yaml_config_content = local.sales_yaml
     
     # OIDC tokens
-    tfe_identity_token = identity_token.tfe.jwt
-    github_token       = identity_token.github.jwt
+    tfe_identity_token = store.varset.platform_team_config.tfe_identity_token
+    github_token       = store.varset.platform_team_config.github_token
     
     # GitHub repository creation
     create_bu_repositories   = local.create_bu_repositories
