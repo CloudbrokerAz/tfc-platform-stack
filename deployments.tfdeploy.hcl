@@ -81,10 +81,6 @@ deployment "finance" {
     # YAML Configuration - Reference local variable
     yaml_config_content = local.finance_yaml
     
-    # Authentication - TFE uses Stack execution context, GitHub disabled
-    tfe_identity_token = ""  # Not needed - uses Stack's execution context
-    github_token       = ""  # Not needed - GitHub creation disabled
-    
     # GitHub repository creation
     create_bu_repositories   = local.create_bu_repositories
     github_organization      = local.github_organization
@@ -116,10 +112,6 @@ deployment "engineering" {
     # YAML Configuration - Reference local variable
     yaml_config_content = local.engineering_yaml
     
-    # Authentication - TFE uses Stack execution context, GitHub disabled
-    tfe_identity_token = ""  # Not needed - uses Stack's execution context
-    github_token       = ""  # Not needed - GitHub creation disabled
-    
     # GitHub repository creation
     create_bu_repositories   = local.create_bu_repositories
     github_organization      = local.github_organization
@@ -150,10 +142,6 @@ deployment "sales" {
     
     # YAML Configuration - Reference local variable
     yaml_config_content = local.sales_yaml
-    
-    # Authentication - TFE uses Stack execution context, GitHub disabled
-    tfe_identity_token = ""  # Not needed - uses Stack's execution context
-    github_token       = ""  # Not needed - GitHub creation disabled
     
     # GitHub repository creation
     create_bu_repositories   = local.create_bu_repositories

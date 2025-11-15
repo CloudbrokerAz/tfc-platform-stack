@@ -14,15 +14,13 @@ required_providers {
 }
 
 # ============================================================================
-# TFE Provider with Automatic Authentication
+# TFE Provider - Uses Stack Execution Context Automatically
 # ============================================================================
 
 provider "tfe" "this" {
   config {
     hostname = "app.terraform.io"
-    
     # Stack execution context provides automatic authentication
-    # No token needed when deploying to same organization
   }
 }
 
