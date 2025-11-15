@@ -105,6 +105,7 @@ deployment "finance" {
     commit_author_name  = local.commit_author_name
     commit_author_email = local.commit_author_email
   }
+  destroy = true
 }
 
 # ============================================================================
@@ -140,6 +141,7 @@ deployment "engineering" {
     commit_author_name  = local.commit_author_name
     commit_author_email = local.commit_author_email
   }
+  destroy = true
 }
 
 # ============================================================================
@@ -175,5 +177,6 @@ deployment "sales" {
     commit_author_name  = local.commit_author_name
     commit_author_email = local.commit_author_email
   }
+  destroy = true
 }
 
