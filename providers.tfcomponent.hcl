@@ -22,7 +22,7 @@ provider "tfe" "this" {
     hostname = "app.terraform.io"
     
     # OIDC Authentication with platform.onboarding audience
-    token = var.tfe_identity_token
+    token = store.varset.platform_team_config.tfe_identity_token
   }
 }
 

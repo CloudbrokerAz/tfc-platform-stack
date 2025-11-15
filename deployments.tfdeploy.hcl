@@ -10,6 +10,12 @@ identity_token "github" {
   audience = ["platform.onboarding"]  # Same audience for GitHub operations
 }
 
+# Access the 'stacks-varset' variable set to retrieve role_arn
+store "varset" "platform_team_config" {
+  name     = "platform_team"
+  category = "terraform"
+}
+
 # ============================================================================
 # Local Values
 # ============================================================================
