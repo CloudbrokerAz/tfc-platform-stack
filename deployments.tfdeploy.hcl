@@ -2,19 +2,8 @@
 # Identity Tokens for OIDC Authentication
 # ============================================================================
 
-identity_token "tfe" {
-  audience = ["platform.onboarding"]
-}
-
-identity_token "github" {
-  audience = ["platform.onboarding"]  # Same audience for GitHub operations
-}
-
-# Access the 'stacks-varset' variable set to retrieve role_arn
-store "varset" "platform_team_config" {
-  name     = "platform_team"
-  category = "terraform"
-}
+# Note: TFE provider uses Stack's execution context automatically
+# GitHub requires a PAT token passed via variable
 
 # ============================================================================
 # Local Values
@@ -31,10 +20,10 @@ locals {
   commit_author_email = "platform-team@cloudbrokeraz.com"
   
   # Repository configuration
-  create_bu_repositories   = true
+  create_bu_repositories   = false  # Disabled: CloudbrokerAz is a user account, not an org
   bu_stack_repo_prefix     = "tfc"
   bu_stack_repo_suffix     = "bu-stack"
-  enable_branch_protection = true
+  enable_branch_protection = false  # Requires GitHub Pro for private repos
   
   # YAML Configuration Content - Embedded as strings (file() not available in .tfdeploy.hcl)
   finance_yaml = <<-EOT
@@ -92,9 +81,9 @@ deployment "finance" {
     # YAML Configuration - Reference local variable
     yaml_config_content = local.finance_yaml
     
-    # OIDC tokens
-    tfe_identity_token = store.varset.platform_team_config.tfe_identity_token
-    github_token       = store.varset.platform_team_config.github_token
+    # Authentication - TFE uses Stack execution context, GitHub disabled
+    tfe_identity_token = ""  # Not needed - uses Stack's execution context
+    github_token       = ""  # Not needed - GitHub creation disabled
     
     # GitHub repository creation
     create_bu_repositories   = local.create_bu_repositories
@@ -127,9 +116,9 @@ deployment "engineering" {
     # YAML Configuration - Reference local variable
     yaml_config_content = local.engineering_yaml
     
-    # OIDC tokens
-    tfe_identity_token = store.varset.platform_team_config.tfe_identity_token
-    github_token       = store.varset.platform_team_config.github_token
+    # Authentication - TFE uses Stack execution context, GitHub disabled
+    tfe_identity_token = ""  # Not needed - uses Stack's execution context
+    github_token       = ""  # Not needed - GitHub creation disabled
     
     # GitHub repository creation
     create_bu_repositories   = local.create_bu_repositories
@@ -162,9 +151,9 @@ deployment "sales" {
     # YAML Configuration - Reference local variable
     yaml_config_content = local.sales_yaml
     
-    # OIDC tokens
-    tfe_identity_token = store.varset.platform_team_config.tfe_identity_token
-    github_token       = store.varset.platform_team_config.github_token
+    # Authentication - TFE uses Stack execution context, GitHub disabled
+    tfe_identity_token = ""  # Not needed - uses Stack's execution context
+    github_token       = ""  # Not needed - GitHub creation disabled
     
     # GitHub repository creation
     create_bu_repositories   = local.create_bu_repositories

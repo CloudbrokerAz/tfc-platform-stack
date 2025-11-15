@@ -14,15 +14,15 @@ required_providers {
 }
 
 # ============================================================================
-# TFE Provider with OIDC Authentication
+# TFE Provider with Automatic Authentication
 # ============================================================================
 
 provider "tfe" "this" {
   config {
     hostname = "app.terraform.io"
     
-    # OIDC Authentication with platform.onboarding audience
-    token = var.tfe_identity_token
+    # Stack execution context provides automatic authentication
+    # No token needed when deploying to same organization
   }
 }
 
