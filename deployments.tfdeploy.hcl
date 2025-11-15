@@ -26,7 +26,7 @@ locals {
   commit_author_email = "platform-team@cloudbrokeraz.com"
   
   # Repository configuration
-  create_bu_repositories   = false  # Disabled: CloudbrokerAz is a user account, not an org
+  create_bu_repositories   = true  # Disabled: CloudbrokerAz is a user account, not an org
   bu_stack_repo_prefix     = "tfc"
   bu_stack_repo_suffix     = "bu-stack"
   enable_branch_protection = false  # Requires GitHub Pro for private repos
@@ -105,78 +105,78 @@ deployment "finance" {
     commit_author_name  = local.commit_author_name
     commit_author_email = local.commit_author_email
   }
-  destroy = true
+  destroy = false
 }
 
-# ============================================================================
-# Deployment: Engineering BU
-# ============================================================================
+# # ============================================================================
+# # Deployment: Engineering BU
+# # ============================================================================
 
-deployment "engineering" {
-  inputs = {
-    # Organization
-    tfc_organization_name = local.organization
+# deployment "engineering" {
+#   inputs = {
+#     # Organization
+#     tfc_organization_name = local.organization
     
-    # Filter to engineering business unit
-    business_unit = "engineering"
+#     # Filter to engineering business unit
+#     business_unit = "engineering"
     
-    # YAML Configuration - Reference local variable
-    yaml_config_content = local.engineering_yaml
+#     # YAML Configuration - Reference local variable
+#     yaml_config_content = local.engineering_yaml
     
-    # GitHub token from variable set
-    github_token = store.varset.platform_team_config.github_token
-    tfe_identity_token = store.varset.platform_team_config.token
+#     # GitHub token from variable set
+#     github_token = store.varset.platform_team_config.github_token
+#     tfe_identity_token = store.varset.platform_team_config.token
     
-    # GitHub repository creation
-    create_bu_repositories   = local.create_bu_repositories
-    github_organization      = local.github_organization
-    bu_stack_repo_prefix     = local.bu_stack_repo_prefix
-    bu_stack_repo_suffix     = local.bu_stack_repo_suffix
-    enable_branch_protection = local.enable_branch_protection
+#     # GitHub repository creation
+#     create_bu_repositories   = local.create_bu_repositories
+#     github_organization      = local.github_organization
+#     bu_stack_repo_prefix     = local.bu_stack_repo_prefix
+#     bu_stack_repo_suffix     = local.bu_stack_repo_suffix
+#     enable_branch_protection = local.enable_branch_protection
     
-    # Platform configuration
-    platform_project_name = local.platform_project
+#     # Platform configuration
+#     platform_project_name = local.platform_project
     
-    # Commit author
-    commit_author_name  = local.commit_author_name
-    commit_author_email = local.commit_author_email
-  }
-  destroy = true
-}
+#     # Commit author
+#     commit_author_name  = local.commit_author_name
+#     commit_author_email = local.commit_author_email
+#   }
+#   destroy = true
+# }
 
-# ============================================================================
-# Deployment: Sales BU
-# ============================================================================
+# # ============================================================================
+# # Deployment: Sales BU
+# # ============================================================================
 
-deployment "sales" {
-  inputs = {
-    # Organization
-    tfc_organization_name = local.organization
+# deployment "sales" {
+#   inputs = {
+#     # Organization
+#     tfc_organization_name = local.organization
     
-    # Filter to sales business unit
-    business_unit = "sales"
+#     # Filter to sales business unit
+#     business_unit = "sales"
     
-    # YAML Configuration - Reference local variable
-    yaml_config_content = local.sales_yaml
+#     # YAML Configuration - Reference local variable
+#     yaml_config_content = local.sales_yaml
     
-    # GitHub token from variable set
-    github_token = store.varset.platform_team_config.github_token
-    tfe_identity_token = store.varset.platform_team_config.token
+#     # GitHub token from variable set
+#     github_token = store.varset.platform_team_config.github_token
+#     tfe_identity_token = store.varset.platform_team_config.token
     
-    # GitHub repository creation
-    create_bu_repositories   = local.create_bu_repositories
-    github_organization      = local.github_organization
-    bu_stack_repo_prefix     = local.bu_stack_repo_prefix
-    bu_stack_repo_suffix     = local.bu_stack_repo_suffix
-    enable_branch_protection = local.enable_branch_protection
+#     # GitHub repository creation
+#     create_bu_repositories   = local.create_bu_repositories
+#     github_organization      = local.github_organization
+#     bu_stack_repo_prefix     = local.bu_stack_repo_prefix
+#     bu_stack_repo_suffix     = local.bu_stack_repo_suffix
+#     enable_branch_protection = local.enable_branch_protection
     
-    # Platform configuration
-    platform_project_name = local.platform_project
+#     # Platform configuration
+#     platform_project_name = local.platform_project
     
-    # Commit author
-    commit_author_name  = local.commit_author_name
-    commit_author_email = local.commit_author_email
-  }
-  destroy = true
-}
+#     # Commit author
+#     commit_author_name  = local.commit_author_name
+#     commit_author_email = local.commit_author_email
+#   }
+#   destroy = true
+# }
 
