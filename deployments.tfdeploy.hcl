@@ -3,7 +3,13 @@
 # ============================================================================
 
 # Note: TFE provider uses Stack's execution context automatically
-# GitHub requires a PAT token passed via variable
+# GitHub requires a PAT token passed via variable set
+
+# Access variable set for GitHub token
+store "varset" "platform_team_config" {
+  name     = "platform_team"
+  category = "terraform"
+}
 
 # ============================================================================
 # Local Values
@@ -81,6 +87,9 @@ deployment "finance" {
     # YAML Configuration - Reference local variable
     yaml_config_content = local.finance_yaml
     
+    # GitHub token from variable set
+    github_token = store.varset.platform_team_config.github_token
+    
     # GitHub repository creation
     create_bu_repositories   = local.create_bu_repositories
     github_organization      = local.github_organization
@@ -112,6 +121,9 @@ deployment "engineering" {
     # YAML Configuration - Reference local variable
     yaml_config_content = local.engineering_yaml
     
+    # GitHub token from variable set
+    github_token = store.varset.platform_team_config.github_token
+    
     # GitHub repository creation
     create_bu_repositories   = local.create_bu_repositories
     github_organization      = local.github_organization
@@ -142,6 +154,9 @@ deployment "sales" {
     
     # YAML Configuration - Reference local variable
     yaml_config_content = local.sales_yaml
+    
+    # GitHub token from variable set
+    github_token = store.varset.platform_team_config.github_token
     
     # GitHub repository creation
     create_bu_repositories   = local.create_bu_repositories

@@ -20,6 +20,20 @@ variable "platform_project_name" {
   default     = "Platform_Team"
 }
 
+variable "tfe_identity_token" {
+  type        = string
+  description = "OIDC identity token for TFE provider authentication"
+  ephemeral   = true
+  sensitive   = true
+}
+
+variable "github_token" {
+  type        = string
+  description = "GitHub personal access token for GitHub provider"
+  ephemeral   = true
+  sensitive   = true
+}
+
 # ============================================================================
 # GitHub Repository Configuration
 # ============================================================================
@@ -81,4 +95,11 @@ variable "business_unit" {
 variable "yaml_config_content" {
   type        = string
   description = "YAML configuration content (will be passed from deployment)"
+}
+
+variable "github_token" {
+  type        = string
+  description = "GitHub personal access token for GitHub provider"
+  ephemeral   = true
+  sensitive   = true
 }

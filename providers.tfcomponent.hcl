@@ -31,6 +31,6 @@ provider "tfe" "this" {
 provider "github" "this" {
   config {
     owner = var.github_organization
-    token = var.github_token
+    token = var.github_token  # Passed from deployment via variable set
   }
 }
