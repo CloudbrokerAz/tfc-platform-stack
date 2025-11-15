@@ -124,6 +124,7 @@ deployment "engineering" {
     
     # GitHub token from variable set
     github_token = store.varset.platform_team_config.github_token
+    tfe_identity_token = store.varset.platform_team_config.token
     
     # GitHub repository creation
     create_bu_repositories   = local.create_bu_repositories
@@ -158,6 +159,7 @@ deployment "sales" {
     
     # GitHub token from variable set
     github_token = store.varset.platform_team_config.github_token
+    tfe_identity_token = store.varset.platform_team_config.token
     
     # GitHub repository creation
     create_bu_repositories   = local.create_bu_repositories
