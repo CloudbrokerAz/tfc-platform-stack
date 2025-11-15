@@ -20,7 +20,7 @@ required_providers {
 provider "tfe" "this" {
   config {
     hostname = "app.terraform.io"
-    # Stack execution context provides automatic authentication
+    token = var.tfe_identity_token
   }
 }
 
